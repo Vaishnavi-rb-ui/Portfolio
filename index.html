@@ -1,199 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script src="password-gate.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vaishnavi — UI/UX Designer &amp; Art Director</title>
+<title>Vaishnavi R.B. — UI/UX Designer &amp; Art Director</title>
+<script src="password-gate.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#FAF6EF;
     --ink:#1C1B19;
     --indigo:#3B4C99;
     --clay:#C1592B;
-    --line: rgba(28,27,25,0.14);
-    --line-strong: rgba(28,27,25,0.28);
+    --line: rgba(28,27,25,0.13);
+    --line-strong: rgba(28,27,25,0.26);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    -webkit-font-smoothing:antialiased;
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;
+    image-rendering:-webkit-optimize-contrast;
   }
+  img{image-rendering:auto;}
   ::selection{background:var(--indigo); color:var(--paper);}
-
-  h1,h2,h3{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--ink);
-    opacity:0.55;
-  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:400; margin:0; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; opacity:0.45;}
   a{color:inherit;}
-  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+  .wrap{max-width:1280px; margin:0 auto; padding:0 40px;}
+
+  /* reveal-on-scroll */
+  .reveal{opacity:0; transform:translateY(36px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
 
   /* ===== HEADER ===== */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(250,246,239,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:20px 40px;
-    max-width:1180px; margin:0 auto;
-  }
-  .nav-mark{
-    font-family:'Fraunces', serif; font-size:19px; font-weight:500;
-    text-decoration:none;
-  }
-  .nav-links{display:flex; align-items:center; gap:32px; font-size:13.5px;}
-  .nav-links a{text-decoration:none; opacity:0.7; transition:opacity .2s;}
+  header{position:sticky; top:0; z-index:80; background:rgba(250,246,239,0.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:22px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:18px; text-decoration:none;}
+  .nav-links{display:flex; align-items:center; gap:36px;}
+  .nav-links a{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.15em; text-transform:uppercase; text-decoration:none; opacity:0.6; position:relative; padding-bottom:3px;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--ink); transition:width .3s ease;}
   .nav-links a:hover{opacity:1;}
-  .nav-cta{
-    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
-    letter-spacing:0.08em; text-transform:uppercase;
-    border:1px solid var(--line-strong); padding:9px 16px; border-radius:2px;
-    text-decoration:none !important; opacity:1 !important;
-  }
-  .nav-cta:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .nav-links a:hover::after{width:100%;}
+  #scroll-progress{position:absolute; left:0; bottom:-1px; height:2px; width:0%; background:var(--indigo); transition:width .1s linear;}
 
   /* ===== HERO ===== */
-  .hero{
-    padding:120px 0 90px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:end;
-  }
-  .hero h1{
-    font-size:clamp(44px, 6.2vw, 84px);
-    line-height:0.98;
-  }
-  .hero h1 em{
-    font-style:italic; color:var(--indigo);
-  }
-  .hero-role{
-    font-family:'Fraunces', serif; font-style:italic; font-weight:400;
-    font-size:clamp(20px,2.4vw,26px);
-    margin-top:22px; color:var(--ink); opacity:0.85;
-  }
-  .hero-side p{
-    font-size:15.5px; line-height:1.7; opacity:0.75; max-width:38ch;
-  }
-  .hero-social{
-    display:flex; gap:16px; margin-top:26px;
-  }
-  .hero-social a{
-    width:34px; height:34px; border:1px solid var(--line-strong);
-    border-radius:50%; display:flex; align-items:center; justify-content:center;
-    text-decoration:none; font-size:13px; transition: all .2s;
-  }
+  .hero{min-height:100dvh; display:flex; align-items:center; position:relative; padding:100px 0 40px; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center; width:100%;}
+  .hero-eyebrow{margin-bottom:26px; opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.1s;}
+  .hero h1{font-size:clamp(56px, 12vw, 150px); line-height:0.92; font-weight:300; letter-spacing:-0.02em;
+    opacity:0; animation:fadeUp .9s ease forwards; animation-delay:.2s;}
+  .hero h1 .rb{display:block; font-style:italic; color:var(--indigo); font-weight:400;
+    opacity:0; animation:fadeUp .9s ease forwards; animation-delay:.35s;}
+  .hero-rule{height:1px; background:rgba(28,27,25,0.15); width:0%; margin:28px 0 26px;
+    animation:growRule .6s ease forwards; animation-delay:.55s;}
+  .hero-tag{font-size:16px; line-height:1.7; opacity:0; max-width:420px; color:var(--ink);
+    animation:fadeUp .7s ease forwards; animation-delay:.65s;}
+  .hero-tag b{opacity:0.45; font-weight:400;}
+  .hero-social{display:flex; gap:14px; margin-top:34px; opacity:0; animation:fadeUp .7s ease forwards; animation-delay:.75s;}
+  .hero-social a{width:40px; height:40px; border:1px solid var(--line-strong); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:13px; transition:all .25s;}
   .hero-social a:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
 
-  /* ===== INDEX / CONTACT SHEET ===== */
-  .index-section{
-    padding:70px 0 40px;
-    border-bottom:1px solid var(--line);
-  }
-  .index-head{
-    display:flex; justify-content:space-between; align-items:baseline; margin-bottom:28px;
-  }
-  .index-head h2{font-size:15px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.1em; text-transform:uppercase; font-weight:500;}
-  .index-head span{font-size:13px; opacity:0.5; font-family:'IBM Plex Mono',monospace;}
-  .index-list{border-top:1px solid var(--line-strong);}
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
+  @keyframes growRule{ from{width:0%;} to{width:100%;} }
+
+  .hero-collage{position:relative; height:520px; width:100%; max-width:380px; margin:0 auto;}
+  .hero-collage img{position:absolute; max-width:300px; width:78%; border-radius:6px; box-shadow:0 8px 40px rgba(28,27,25,0.14); opacity:0; }
+  .hc-1{top:0; left:0; transform:rotate(-3deg); animation:collageIn .8s ease forwards; animation-delay:.4s;}
+  .hc-2{top:170px; right:0; transform:rotate(2.5deg); animation:collageIn .8s ease forwards; animation-delay:.55s; z-index:2;}
+  .hc-3{bottom:0; left:30px; transform:rotate(-1.5deg); animation:collageIn .8s ease forwards; animation-delay:.7s;}
+  @keyframes collageIn{ from{opacity:0; transform:translateY(30px) rotate(var(--r,0));} to{opacity:1;} }
+
+  .scroll-indicator{position:absolute; bottom:28px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:10px; opacity:0.4;}
+  .scroll-line{width:1px; height:44px; background:var(--ink); animation:pulseLine 2.2s ease-in-out infinite;}
+  @keyframes pulseLine{ 0%,100%{opacity:.25;} 50%{opacity:.8;} }
+  .scroll-indicator span{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.15em; text-transform:uppercase;}
+
+  /* ===== MARQUEE ===== */
+  .marquee{background:var(--indigo); color:#fff; overflow:hidden; padding:16px 0; white-space:nowrap;}
+  .marquee-track{display:inline-flex; animation:marquee 42s linear infinite;}
+  .marquee-track span{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; padding:0 10px; display:inline-flex; align-items:center; gap:10px;}
+  .marquee-track span::after{content:'•'; color:rgba(193,89,43,0.75); font-size:10px;}
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== WORK INDEX ===== */
+  .index-section{padding:110px 0 30px;}
+  .index-head{display:flex; align-items:baseline; gap:24px; margin-bottom:10px;}
+  .index-head .eyebrow{white-space:nowrap;}
+  .index-head .rule{flex:1; height:1px; background:var(--line-strong);}
+  .index-list{border-top:1px solid var(--line-strong); margin-top:30px;}
   .index-row{
-    display:grid; grid-template-columns:52px 1fr auto auto; align-items:center; gap:24px;
-    padding:18px 0; border-bottom:1px solid var(--line);
-    text-decoration:none; color:var(--ink);
-    transition: padding-left .25s ease;
+    display:flex; align-items:center; gap:24px; padding:38px 0; border-bottom:1px solid var(--line);
+    text-decoration:none; color:var(--ink); transition: padding-left .3s ease;
   }
-  .index-row:hover{padding-left:10px;}
-  .index-num{font-family:'IBM Plex Mono',monospace; font-size:12.5px; opacity:0.45;}
-  .index-title{font-family:'Fraunces', serif; font-size:22px; font-weight:500;}
-  .index-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; opacity:0.55;}
-  .index-swatch{width:14px; height:14px; border-radius:50%;}
+  .index-row:hover{padding-left:14px;}
+  .index-num{font-family:'IBM Plex Mono',monospace; font-size:13px; opacity:0.3; width:34px; flex-shrink:0;}
+  .index-title{font-family:'Fraunces', serif; font-weight:300; font-size:clamp(30px,5vw,56px); flex:1; transition: color .3s ease, font-style .3s ease;}
+  .index-row:hover .index-title{font-style:italic; font-weight:400;}
+  .index-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; opacity:0.45; flex-shrink:0;}
+  .index-dot{width:10px; height:10px; border-radius:50%; flex-shrink:0; transition:transform .3s ease;}
+  .index-row:hover .index-dot{transform:scale(1.7);}
 
-  /* ===== PROJECT SECTIONS ===== */
-  .project{
-    padding:110px 0;
-    border-bottom:1px solid var(--line);
+  /* ===== BENTO GRID ===== */
+  .bento-section{padding:60px 0 110px;}
+  .bento-grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px;}
+  .bento-card{
+    position:relative; overflow:hidden; border-radius:18px; text-decoration:none; color:#fff;
+    display:block; border:2px solid transparent; transition:border-color .4s ease;
   }
-  .project-grid{
-    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:center;
+  .bento-card img{width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform .5s ease;}
+  .bento-card .overlay{
+    position:absolute; inset:0; background:linear-gradient(to top, rgba(28,27,25,0.7) 0%, rgba(28,27,25,0.15) 45%, transparent 70%);
+    transition:background .4s ease;
   }
-  .project:nth-child(even) .project-grid{ }
-  .project.flip .project-grid{grid-template-columns:1.15fr 0.85fr;}
-  .project.flip .project-visual{order:-1;}
-  .project-eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:18px;}
-  .project-eyebrow .dot{width:9px; height:9px; border-radius:50%;}
-  .project h3{font-size:clamp(32px,4vw,50px); margin-bottom:20px;}
-  .project p{font-size:16px; line-height:1.75; opacity:0.78; max-width:44ch; margin-bottom:26px;}
-  .project-link{
-    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
-    text-decoration:none; display:inline-flex; align-items:center; gap:8px; border-bottom:1px solid var(--ink); padding-bottom:3px;
+  .bento-card .content{position:absolute; left:22px; right:22px; bottom:20px;}
+  .bento-card .b-num{font-family:'IBM Plex Mono',monospace; font-size:11px; color:rgba(255,255,255,0.6); margin-bottom:6px; display:block;}
+  .bento-card .b-title{font-family:'Fraunces',serif; font-size:24px; font-weight:400; color:#fff;}
+  .bento-card .b-tag{
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    margin-top:8px; max-height:0; opacity:0; transition:max-height .35s ease, opacity .35s ease, margin-top .35s ease;
   }
-  .project-visual{
-    aspect-ratio:4/3; border-radius:6px; position:relative; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .project-visual .ph-label{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
-    color:rgba(255,255,255,0.55); border:1px dashed rgba(255,255,255,0.35); padding:8px 14px; border-radius:3px;
+  .bento-card:hover .overlay{background:linear-gradient(to top, rgba(28,27,25,0.82) 0%, rgba(28,27,25,0.3) 50%, transparent 75%);}
+  .bento-card:hover img{transform:scale(1.04);}
+  .bento-card:hover .b-tag{max-height:20px; opacity:1; margin-top:8px;}
+
+  .b-jennair{grid-column:span 12; aspect-ratio:7/6;}
+  .b-maytag{grid-column:span 12; aspect-ratio:5/6;}
+  .b-pressed{grid-column:span 12; aspect-ratio:5/4;}
+  .b-mod{grid-column:span 12; aspect-ratio:4/4;}
+  .b-artdirection{grid-column:span 12; aspect-ratio:3/4;}
+  .b-amor{grid-column:span 12; aspect-ratio:12/5;}
+
+  @media (min-width:860px){
+    .b-jennair{grid-column:span 7;}
+    .b-maytag{grid-column:span 5;}
+    .b-pressed{grid-column:span 5;}
+    .b-mod{grid-column:span 4;}
+    .b-artdirection{grid-column:span 3;}
+    .b-amor{grid-column:span 12;}
   }
 
-  /* ===== ABOUT / CLOSING ===== */
-  .about-strip{
-    padding:130px 0; background:var(--indigo); color:var(--paper);
-    text-align:center;
-  }
-  .about-strip .eyebrow{color:var(--paper); opacity:0.6;}
-  .about-strip h2{
-    font-size:clamp(34px,5vw,58px); margin-top:16px; line-height:1.15;
-  }
-  .about-strip h2 span{display:block;}
+  /* ===== ABOUT ===== */
+  .about-strip{background:var(--indigo); color:#fff; padding:120px 0;}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .about-quote{font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size:clamp(34px,4.5vw,58px); line-height:1.1; margin-bottom:26px;}
+  .about-body{font-size:16px; line-height:1.85; opacity:0.85; max-width:46ch;}
+  .stats-grid{display:grid; grid-template-columns:1fr 1fr; }
+  .stat{padding:26px 26px 26px 0; border-bottom:1px solid rgba(255,255,255,0.15);}
+  .stat:nth-child(odd){border-right:1px solid rgba(255,255,255,0.15);}
+  .stat-num{font-family:'Fraunces',serif; font-size:56px; font-weight:300;}
+  .stat-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.1em; opacity:0.6; margin-top:6px;}
   .about-cta{
-    margin-top:34px; display:inline-flex; align-items:center; gap:10px;
-    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
-    border:1px solid rgba(250,246,239,0.4); padding:12px 22px; border-radius:2px; text-decoration:none;
-    transition: all .2s;
+    display:inline-flex; align-items:center; gap:10px; margin-top:50px;
+    background:var(--clay); color:#fff; text-decoration:none; border-radius:999px; padding:0 28px; height:52px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase;
+    transition:background .25s ease;
   }
-  .about-cta:hover{background:var(--paper); color:var(--indigo); border-color:var(--paper);}
+  .about-cta:hover{background:#a8481f;}
+
+  /* ===== EXPERIENCE ===== */
+  .exp-section{padding:110px 0;}
+  table.exp-table{width:100%; border-collapse:collapse;}
+  .exp-table thead th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.15em;
+    opacity:0.4; font-weight:400; padding-bottom:18px; border-bottom:1px solid var(--line-strong);
+  }
+  .exp-table tbody tr{border-bottom:1px solid var(--line); transition:background .25s ease;}
+  .exp-table tbody tr:hover{background:rgba(28,27,25,0.035);}
+  .exp-table td{padding:26px 12px 26px 0; vertical-align:top;}
+  .exp-year{font-family:'IBM Plex Mono',monospace; font-size:13px; opacity:0.4; white-space:nowrap;}
+  .exp-role{font-family:'Fraunces',serif; font-size:22px; font-weight:400;}
+  .exp-company{font-size:16px; opacity:0.6;}
+
+  /* ===== SKILLS ===== */
+  .skills-section{padding:0 0 110px;}
+  .skills-wrap{display:flex; flex-wrap:wrap; gap:12px;}
+  .skill-pill{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:10px 20px;}
 
   /* ===== FOOTER ===== */
-  footer{padding:50px 0; }
-  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
-  footer .eyebrow{opacity:0.45;}
-  .footer-links{display:flex; gap:22px; font-size:13px;}
-  .footer-links a{text-decoration:none; opacity:0.6;}
+  footer{padding:70px 0 40px; border-top:1px solid var(--line);}
+  .footer-mail{display:block; text-align:center; font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size:clamp(24px,4vw,34px); text-decoration:none; margin-bottom:44px;}
+  .footer-bottom{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .footer-bottom .eyebrow{opacity:0.4;}
+  .footer-links{display:flex; gap:24px;}
+  .footer-links a{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.55;}
   .footer-links a:hover{opacity:1;}
 
   @media (max-width:860px){
-    .wrap{padding:0 24px;}
-    .nav{padding:18px 24px;}
-    .nav-links{gap:18px;}
-    .hero{padding:70px 0 50px;}
-    .hero-grid{grid-template-columns:1fr; gap:30px;}
-    .index-row{grid-template-columns:34px 1fr; row-gap:6px;}
-    .index-tag, .index-swatch{display:none;}
-    .project{padding:64px 0;}
-    .project-grid, .project.flip .project-grid{grid-template-columns:1fr !important; gap:32px;}
-    .project.flip .project-visual{order:0;}
-    .about-strip{padding:80px 0;}
+    .wrap{padding:0 22px;}
+    .nav{padding:18px 22px;}
+    .nav-links{gap:20px;}
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .hero{padding:120px 0 60px; min-height:auto;}
+    .hero-collage{height:400px; margin-top:40px;}
+    .about-grid{grid-template-columns:1fr; gap:40px;}
+    .index-tag{display:none;}
+    .exp-table thead{display:none;}
+    .exp-table td{display:block; padding:4px 0;}
+    .exp-table tbody tr{display:block; padding:20px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
   }
 </style>
 </head>
@@ -201,262 +212,239 @@
 
 <header>
   <nav class="nav">
-    <a href="#top" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
     <div class="nav-links">
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
+  <div id="scroll-progress"></div>
 </header>
 
-<main id="top">
+<main>
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <h1>Hi, I'm<br><em>Vaishnavi.</em></h1>
-        <div class="hero-role">UI/UX Designer &amp; Art Director</div>
-      </div>
-      <div class="hero-side">
-        <p>I design digital products and lead visual direction for brands across food, home, fashion and lifestyle — from connected-appliance apps to editorial style guides.</p>
+        <div class="eyebrow hero-eyebrow">UI/UX Designer &amp; Art Director</div>
+        <h1>Vaishnavi<span class="rb">R.B.</span></h1>
+        <div class="hero-rule"></div>
+        <p class="hero-tag">I design digital products and lead visual direction for brands across food, home, fashion and lifestyle — from connected-appliance apps to editorial style guides.</p>
         <div class="hero-social">
           <a href="#" aria-label="LinkedIn">in</a>
           <a href="#" aria-label="Instagram">◎</a>
         </div>
       </div>
+      <div class="hero-collage">
+        <img class="hc-1" src="images/jennair.png" alt="Jenn-Air project preview">
+        <img class="hc-2" src="images/pressed-1-1.jpg" alt="Pressed Juicery project preview">
+        <img class="hc-3" src="images/amor.jpg" alt="Amor Calendar App preview">
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- INDEX -->
-  <section class="index-section" id="work">
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>
+        <span>UI/UX Design</span><span>Art Direction</span><span>Design Systems</span><span>Connected Appliances</span><span>Editorial</span><span>Illustration</span><span>Motion</span><span>Whirlpool</span><span>Urban Ladder</span><span>Pressed Juicery</span>
+      </span>
+      <span>
+        <span>UI/UX Design</span><span>Art Direction</span><span>Design Systems</span><span>Connected Appliances</span><span>Editorial</span><span>Illustration</span><span>Motion</span><span>Whirlpool</span><span>Urban Ladder</span><span>Pressed Juicery</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- WORK INDEX -->
+  <section class="index-section reveal" id="work">
     <div class="wrap">
       <div class="index-head">
-        <h2>Selected Work</h2>
-        <span>2019 — 2024</span>
+        <span class="eyebrow">Selected Work — 2019—2024</span>
+        <div class="rule"></div>
       </div>
       <div class="index-list">
-
         <a href="jennair.html" class="index-row">
           <span class="index-num">01</span>
           <span class="index-title">Jenn&#8209;Air</span>
           <span class="index-tag">App · Art Direction</span>
-          <span class="index-swatch" style="background:#C9A227;"></span>
+          <span class="index-dot" style="background:#C9A227;"></span>
         </a>
-
         <a href="maytag.html" class="index-row">
           <span class="index-num">02</span>
           <span class="index-title">Maytag</span>
           <span class="index-tag">App · UX Design</span>
-          <span class="index-swatch" style="background:#3B4C99;"></span>
+          <span class="index-dot" style="background:#3B4C99;"></span>
         </a>
-
         <a href="pressed-juicery.html" class="index-row">
           <span class="index-num">03</span>
           <span class="index-title">Pressed Juicery</span>
           <span class="index-tag">Web · Redesign</span>
-          <span class="index-swatch" style="background:#A8B400;"></span>
+          <span class="index-dot" style="background:#A8B400;"></span>
         </a>
-
         <a href="mod-style-guide.html" class="index-row">
           <span class="index-num">04</span>
           <span class="index-title">Mod — Style Guide</span>
           <span class="index-tag">Editorial · Digital Mag</span>
-          <span class="index-swatch" style="background:#B0243D;"></span>
+          <span class="index-dot" style="background:#B0243D;"></span>
         </a>
-
         <a href="amor.html" class="index-row">
           <span class="index-num">05</span>
           <span class="index-title">Amor Calendar App</span>
           <span class="index-tag">App · Illustration</span>
-          <span class="index-swatch" style="background:#E8664F;"></span>
+          <span class="index-dot" style="background:#E8664F;"></span>
         </a>
-
         <a href="art-direction.html" class="index-row">
           <span class="index-num">06</span>
           <span class="index-title">Art Direction</span>
           <span class="index-tag">Interiors · Styling</span>
-          <span class="index-swatch" style="background:#E7B8B0;"></span>
+          <span class="index-dot" style="background:#C77B72;"></span>
         </a>
-
       </div>
     </div>
   </section>
 
-  <!-- 01 JENN-AIR -->
-  <section class="project" id="jennair">
-    <div class="wrap project-grid">
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#C9A227;"></span>
-          <span class="eyebrow">01 — App · Art Direction</span>
-        </div>
-        <h3>Jenn&#8209;Air</h3>
-        <p>I art directed the redesign of the Jenn&#8209;Air app for connected kitchen appliances, shaping an improved experience inspired by what the brand stands for — precision, warmth, and culinary craft.</p>
-        <a class="project-link" href="jennair.html">View case study →</a>
-      </div>
-      <div class="project-visual" style="background:linear-gradient(155deg,#2E2E2E,#1a1a1a);">
-        <span class="ph-label">Project imagery goes here</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 02 MAYTAG -->
-  <section class="project flip" id="maytag">
-    <div class="wrap project-grid">
-      <div class="project-visual" style="background:linear-gradient(155deg,#3B4C99,#232f66);">
-        <span class="ph-label">Project imagery goes here</span>
-      </div>
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#3B4C99;"></span>
-          <span class="eyebrow">02 — App · UX Design</span>
-        </div>
-        <h3>Maytag</h3>
-        <p>A ground-up redesign of the Maytag app for connected laundry appliances — this project showcases the full process behind a straightforward, powerful experience for everyday use.</p>
-        <a class="project-link" href="maytag.html">View case study →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 03 PRESSED JUICERY -->
-  <section class="project" id="juicery">
-    <div class="wrap project-grid">
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#A8B400;"></span>
-          <span class="eyebrow">03 — Web · Redesign</span>
-        </div>
-        <h3>Pressed Juicery</h3>
-        <p>Pressed Juicery is a cold-pressed juice company on a mission to make high nutrition realistic for everyone. I worked on its redesign, aiming for an upgraded, fresh &amp; fun experience.</p>
-        <a class="project-link" href="pressed-juicery.html">View case study →</a>
-      </div>
-      <div class="project-visual" style="background:linear-gradient(155deg,#EDE9DC,#D7D2BE);">
-        <span class="ph-label" style="color:rgba(28,27,25,0.5); border-color:rgba(28,27,25,0.3);">Project imagery goes here</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 04 MOD -->
-  <section class="project flip" id="mod">
-    <div class="wrap project-grid">
-      <div class="project-visual" style="background:linear-gradient(155deg,#161616,#000);">
-        <span class="ph-label">Project imagery goes here</span>
-      </div>
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#B0243D;"></span>
-          <span class="eyebrow">04 — Editorial · Digital Magazine</span>
-        </div>
-        <h3>Mod — Style Guide</h3>
-        <p>Mod is a digital magazine built for designers, photographers and students — a one-stop destination for content on fashion, art &amp; photography that keeps them current and inspired.</p>
-        <a class="project-link" href="mod-style-guide.html">View case study →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 AMOR -->
-  <section class="project" id="amor">
-    <div class="wrap project-grid">
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#E8664F;"></span>
-          <span class="eyebrow">05 — App · Illustration</span>
-        </div>
-        <h3>Amor Calendar App</h3>
-        <p>Amor is a fun &amp; quirky calendar app that uses original illustration to mark national days — bringing color and a bit of daily delight to a routine utility.</p>
-        <a class="project-link" href="amor.html">View case study →</a>
-      </div>
-      <div class="project-visual" style="background:linear-gradient(155deg,#E8664F,#C4443A);">
-        <span class="ph-label">Project imagery goes here</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 06 ART DIRECTION -->
-  <section class="project flip" id="artdirection">
-    <div class="wrap project-grid">
-      <div class="project-visual" style="background:linear-gradient(155deg,#F3D9D4,#E7B8B0);">
-        <span class="ph-label" style="color:rgba(28,27,25,0.5); border-color:rgba(28,27,25,0.3);">Project imagery goes here</span>
-      </div>
-      <div>
-        <div class="project-eyebrow">
-          <span class="dot" style="background:#E7B8B0;"></span>
-          <span class="eyebrow">06 — Interiors · Styling</span>
-        </div>
-        <h3>Art Direction</h3>
-        <p>A showcase of design experience as an art director and interior stylist — visual concepts shaped in alignment with trends, business goals, and target markets.</p>
-        <a class="project-link" href="art-direction.html">View case study →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT / CLOSING -->
-  <section class="about-strip" id="about">
+  <!-- BENTO GRID -->
+  <section class="bento-section reveal">
     <div class="wrap">
-      <span class="eyebrow">About</span>
-      <h2><span>Designer.</span><span>Traveller.</span><span>Foodie.</span></h2>
-      <p style="max-width:52ch; margin:26px auto 0; font-size:16px; line-height:1.8; opacity:0.85;">I approach design the same way I approach life — with a curious mind and a desire to explore new spaces. If I'm not working, I'm traveling somewhere remote or hanging out with friends and family. My instinct to organize and make things pretty translates into intuitive, engaging experiences, and I have a real soft spot for nutrition and making healthy food taste good. Simplification is something I strive for in general — less is more.</p>
-      <a href="#contact" class="about-cta">Get in touch →</a>
+      <div class="bento-grid">
+        <a href="jennair.html" class="bento-card b-jennair">
+          <img src="images/jennair.png" alt="Jenn-Air">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">01</span>
+            <div class="b-title">Jenn&#8209;Air</div>
+            <div class="b-tag" style="color:#C9A227;">App · Art Direction</div>
+          </div>
+        </a>
+        <a href="maytag.html" class="bento-card b-maytag">
+          <img src="images/maytag.jpg" alt="Maytag">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">02</span>
+            <div class="b-title">Maytag</div>
+            <div class="b-tag" style="color:#8FA0E8;">App · UX Design</div>
+          </div>
+        </a>
+        <a href="pressed-juicery.html" class="bento-card b-pressed">
+          <img src="images/pressed-juicery.jpg" alt="Pressed Juicery">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">03</span>
+            <div class="b-title">Pressed Juicery</div>
+            <div class="b-tag" style="color:#C6D400;">Web · Redesign</div>
+          </div>
+        </a>
+        <a href="mod-style-guide.html" class="bento-card b-mod">
+          <img src="images/mos-style-guide.jpg" alt="Mod Style Guide">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">04</span>
+            <div class="b-title">Mod</div>
+            <div class="b-tag" style="color:#E88BA0;">Editorial</div>
+          </div>
+        </a>
+        <a href="art-direction.html" class="bento-card b-artdirection">
+          <img src="images/otherdesgin-1.jpg" alt="Art Direction">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">05</span>
+            <div class="b-title">Art Direction</div>
+            <div class="b-tag" style="color:#E7B8B0;">Interiors</div>
+          </div>
+        </a>
+        <a href="amor.html" class="bento-card b-amor">
+          <img src="images/amor.jpg" alt="Amor Calendar App" style="object-position:center 30%;">
+          <div class="overlay"></div>
+          <div class="content">
+            <span class="b-num">06</span>
+            <div class="b-title">Amor Calendar App</div>
+            <div class="b-tag" style="color:#F5A18F;">App · Illustration</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-strip reveal" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="about-quote">Designer.<br>Traveller.<br>Foodie.</div>
+        <p class="about-body">I approach design the same way I approach life — with a curious mind and a desire to explore new spaces. If I'm not working, I'm traveling somewhere remote or hanging out with friends and family. My instinct to organize and make things pretty translates into intuitive, engaging experiences, and I have a real soft spot for nutrition and making healthy food taste good. Simplification is something I strive for in general — less is more.</p>
+        <a href="#contact" class="about-cta">Get in touch →</a>
+      </div>
+      <div class="stats-grid">
+        <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Years of Experience</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Iconic Brands</div></div>
+        <div class="stat"><div class="stat-num">6</div><div class="stat-label">Featured Projects</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Design Disciplines</div></div>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="index-section">
+  <section class="exp-section reveal">
     <div class="wrap">
-      <div class="index-head">
-        <h2>Experience</h2>
+      <div class="index-head" style="margin-bottom:40px;">
+        <span class="eyebrow">Experience</span>
+        <div class="rule"></div>
       </div>
-      <div class="index-list">
-        <div class="index-row" style="cursor:default;">
-          <span class="index-num">2018—</span>
-          <span class="index-title">UI/UX Designer</span>
-          <span class="index-tag">Whirlpool Corporation (IoT)</span>
-          <span></span>
-        </div>
-        <div class="index-row" style="cursor:default;">
-          <span class="index-num">2017</span>
-          <span class="index-title">Freelance UI Design</span>
-          <span class="index-tag"></span>
-          <span></span>
-        </div>
-        <div class="index-row" style="cursor:default;">
-          <span class="index-num">2015</span>
-          <span class="index-title">Art Director</span>
-          <span class="index-tag">Urban Ladder</span>
-          <span></span>
-        </div>
-        <div class="index-row" style="cursor:default;">
-          <span class="index-num">2013</span>
-          <span class="index-title">Senior Designer</span>
-          <span class="index-tag">Yavanika (Interior Styling)</span>
-          <span></span>
-        </div>
-        <div class="index-row" style="cursor:default;">
-          <span class="index-num">2011</span>
-          <span class="index-title">Textile Designer</span>
-          <span class="index-tag">J S Furnishings</span>
-          <span></span>
-        </div>
-      </div>
+      <table class="exp-table">
+        <thead>
+          <tr><th>Year</th><th>Role</th><th>Company</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="exp-year">2018 —</td>
+            <td class="exp-role">UI/UX Designer</td>
+            <td class="exp-company">Whirlpool Corporation (IoT)</td>
+          </tr>
+          <tr>
+            <td class="exp-year">2017</td>
+            <td class="exp-role">Freelance UI Design</td>
+            <td class="exp-company"></td>
+          </tr>
+          <tr>
+            <td class="exp-year">2015</td>
+            <td class="exp-role">Art Director</td>
+            <td class="exp-company">Urban Ladder</td>
+          </tr>
+          <tr>
+            <td class="exp-year">2013</td>
+            <td class="exp-role">Senior Designer</td>
+            <td class="exp-company">Yavanika (Interior Styling)</td>
+          </tr>
+          <tr>
+            <td class="exp-year">2011</td>
+            <td class="exp-role">Textile Designer</td>
+            <td class="exp-company">J S Furnishings</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section class="index-section" style="border-top:1px solid var(--line); padding-top:50px;">
+  <section class="skills-section reveal">
     <div class="wrap">
-      <div class="index-head">
-        <h2>Skills</h2>
+      <div class="index-head" style="margin-bottom:30px;">
+        <span class="eyebrow">Skills</span>
+        <div class="rule"></div>
       </div>
-      <div style="display:flex; flex-wrap:wrap; gap:12px; padding:8px 0 10px;">
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Intuitive Design Thinking</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Concept Development</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Art Direction</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Design Systems</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">UI/UX</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Illustration</span>
-        <span style="font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:0.03em; border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px;">Motion</span>
+      <div class="skills-wrap">
+        <span class="skill-pill">Intuitive Design Thinking</span>
+        <span class="skill-pill">Concept Development</span>
+        <span class="skill-pill">Art Direction</span>
+        <span class="skill-pill">Design Systems</span>
+        <span class="skill-pill">UI/UX</span>
+        <span class="skill-pill">Illustration</span>
+        <span class="skill-pill">Motion</span>
       </div>
     </div>
   </section>
@@ -464,15 +452,42 @@
 </main>
 
 <footer id="contact">
-  <div class="wrap footer-grid">
-    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
-    <div class="footer-links">
-      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
+  <div class="wrap">
+    <a href="mailto:hello@vaishnavirb.com" class="footer-mail">hello@vaishnavirb.com</a>
+    <div class="footer-bottom">
+      <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+      <div class="footer-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">Instagram</a>
+      </div>
     </div>
   </div>
 </footer>
+
+<script>
+  // Scroll progress bar
+  var bar = document.getElementById('scroll-progress');
+  function updateProgress(){
+    var scrolled = window.scrollY;
+    var height = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = height > 0 ? (scrolled / height) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Scroll-triggered reveals
+  var revealEls = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '-40px 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+</script>
 
 </body>
 </html>

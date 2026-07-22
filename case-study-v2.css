@@ -1,0 +1,96 @@
+/* ============================================================
+   case-study-v2.css
+   Shared modernization layer for all case study pages.
+   Loaded AFTER each page's own inline <style> block, so these
+   rules win on the cascade without needing to touch page content.
+   ============================================================ */
+
+:root{
+  --accent-final: var(--accent, var(--gold));
+}
+
+html{scroll-behavior:smooth;}
+img{image-rendering:auto;}
+
+/* ===== NAV ===== */
+header{overflow:visible; position:sticky;}
+.nav-mark{font-size:19px; letter-spacing:0.01em;}
+.back-link{opacity:0.55; transition:opacity .25s ease;}
+.back-link:hover{opacity:1;}
+#scroll-progress{
+  position:absolute; left:0; bottom:-1px; height:2px; width:0%;
+  background:var(--accent-final); transition:width .12s linear; z-index:60;
+}
+
+/* ===== HERO — full height, watermark case number ===== */
+.hero{
+  min-height:86vh; display:flex; align-items:center; position:relative;
+  overflow:hidden; padding:120px 0 60px; border-bottom:none !important;
+}
+.hero .wrap{position:relative; z-index:2;}
+.hero[data-num]::before{
+  content:attr(data-num);
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-52%);
+  font-family:'Fraunces',serif; font-weight:300; font-size:min(48vw,560px); line-height:1;
+  color:var(--accent-final); opacity:0.07; z-index:0; pointer-events:none; white-space:nowrap;
+}
+.hero .eyebrow{
+  display:inline-flex !important; align-items:center; gap:9px;
+  border:1px solid var(--line-strong); border-radius:999px; padding:9px 18px 9px 14px;
+  margin-bottom:34px !important;
+}
+.hero h1{
+  font-size:clamp(42px, 7.4vw, 100px) !important; font-weight:300 !important;
+  line-height:0.98 !important; max-width:17ch; letter-spacing:-0.015em;
+}
+
+/* ===== LEDE / SECTION TYPOGRAPHY ===== */
+.lede h2, .lede h3{font-weight:300; font-size:clamp(26px,3.2vw,38px);}
+.section h2{font-size:clamp(32px,4.2vw,54px); font-weight:300; letter-spacing:-0.01em;}
+.section h3{font-size:clamp(24px,2.8vw,32px); font-weight:300;}
+.section p, .lede p{font-size:17px; line-height:1.9; opacity:0.72;}
+
+/* section label rule, added visually via eyebrow siblings where present */
+.section > .wrap > h2:first-child,
+.section > .wrap > h3:first-child{position:relative;}
+
+/* ===== FULL-BLEED IMAGES ===== */
+.imgrow.full .wrap-wide{
+  max-width:100vw !important; width:100vw; padding:0 !important;
+  position:relative; left:50%; right:50%; margin-left:-50vw !important; margin-right:-50vw !important;
+}
+.imgrow.full img{border-radius:0;}
+
+/* grid images: soften corners, add depth */
+.imgrow:not(.full) img{border-radius:14px;}
+
+/* ===== SCROLL REVEAL ===== */
+.reveal{opacity:0; transform:translateY(40px); transition:opacity .8s ease, transform .8s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+.imgrow img, .lede img{
+  opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;
+}
+.imgrow img.in, .lede img.in{opacity:1; transform:translateY(0);}
+
+/* ===== GOALS LIST refinement ===== */
+.goals-list li{transition:padding-left .3s ease;}
+.goals-list li:hover{padding-left:10px; background:rgba(28,27,25,0.02);}
+
+/* ===== OTHER PROJECTS ===== */
+.op-card img{border-radius:14px; transition:transform .5s ease;}
+.op-card:hover img{transform:scale(1.035);}
+.op-cap{transition:opacity .25s ease;}
+
+/* ===== FEATURE ROW icons ===== */
+.icon{transition:transform .4s ease;}
+.feature-row:hover .icon{transform:translateY(-3px);}
+
+@media (max-width:820px){
+  .hero{min-height:auto; padding:110px 0 50px;}
+  .hero[data-num]::before{font-size:38vw;}
+  .imgrow.full .wrap-wide{left:0; right:0; margin-left:0 !important; margin-right:0 !important; width:100%;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+}
