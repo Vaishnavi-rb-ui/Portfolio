@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="password-gate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jenn-Air — Vaishnavi R.B.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EF;
+    --ink:#1C1B19;
+    --gold:#C9A227;
+    --charcoal:#232323;
+    --line: rgba(28,27,25,0.14);
+    --line-strong: rgba(28,27,25,0.28);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--gold); color:var(--ink);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  .wrap-wide{max-width:1280px; margin:0 auto; padding:0 40px;}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:19px; font-weight:500; text-decoration:none;}
+  .back-link{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.65; display:flex; align-items:center; gap:8px;}
+  .back-link:hover{opacity:1;}
+
+  .hero{padding:90px 0 60px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--gold);}
+  .hero h1{font-size:clamp(38px,5.4vw,66px); line-height:1.05;}
+
+  .lede{padding:60px 0; border-bottom:1px solid var(--line);}
+  .lede h2{font-size:clamp(26px,3vw,36px); line-height:1.2; margin-bottom:26px; max-width:20ch;}
+  .lede p{font-size:16.5px; line-height:1.8; opacity:0.8; max-width:62ch;}
+
+  .imgrow{padding:50px 0; border-bottom:1px solid var(--line);}
+  .imgrow-inner{display:grid; gap:20px;}
+  .imgrow-inner.cols-2{grid-template-columns:1fr 1fr;}
+  .imgrow-inner.cols-3{grid-template-columns:repeat(3,1fr);}
+  .imgrow-inner.cols-5{grid-template-columns:repeat(5,1fr);}
+  .imgrow img{width:100%; display:block; border-radius:4px;}
+  .imgrow.full img{border-radius:0;}
+  figcaption{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.05em; text-transform:uppercase; opacity:0.5; margin-top:10px; text-align:center;}
+
+  .section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .section h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:24px; max-width:22ch;}
+  .section h3{font-size:clamp(22px,2.6vw,28px); margin-bottom:18px; max-width:26ch;}
+  .section p{font-size:16px; line-height:1.8; opacity:0.78; max-width:68ch; margin-bottom:20px;}
+
+  .goals-list{list-style:none; margin:0; padding:0; counter-reset:goal; border-top:1px solid var(--line-strong); max-width:74ch;}
+  .goals-list li{counter-increment:goal; padding:20px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:44px 1fr; gap:18px;}
+  .goals-list li::before{content:counter(goal, decimal-leading-zero); font-family:'IBM Plex Mono',monospace; font-size:13px; opacity:0.45; padding-top:2px;}
+  .goals-list li p{margin:0; font-size:15.5px; line-height:1.7; opacity:0.85;}
+  .goals-list li b{font-weight:600;}
+
+  .feature-row{display:grid; grid-template-columns:220px 1fr; gap:48px; align-items:start;}
+  .feature-row img.icon{width:72px; height:auto; margin-bottom:6px;}
+
+  .other-projects{padding:90px 0;}
+  .other-projects .eyebrow{margin-bottom:14px;}
+  .other-projects h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:44px; max-width:20ch;}
+  .op-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .op-card{text-decoration:none; color:var(--ink); display:block;}
+  .op-card img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; display:block; transition:transform .3s ease;}
+  .op-card:hover img{transform:scale(1.02);}
+  .op-cap{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; margin-top:14px; opacity:0.7;}
+
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; max-width:1280px; margin:0 auto; padding:0 40px;}
+  footer .eyebrow{opacity:0.45;}
+  .footer-links{display:flex; gap:22px; font-size:13px;}
+  .footer-links a{text-decoration:none; opacity:0.6;}
+  .footer-links a:hover{opacity:1;}
+
+  @media (max-width:820px){
+    .wrap, .wrap-wide{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    .imgrow-inner.cols-2, .imgrow-inner.cols-3, .imgrow-inner.cols-5{grid-template-columns:1fr 1fr;}
+    .feature-row{grid-template-columns:1fr;}
+    .op-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html#work" class="back-link">← Back to work</a>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>01 — App · Art Direction</div>
+      <h1>Jenn&#8209;Air Connected Appliances<br>App Redesign</h1>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <h2>Creating a connected kitchen appliances app experience to honor the brand principles.</h2>
+      <p>Jenn&#8209;Air is a premium kitchen appliances brand owned by the Whirlpool Corporation, known for sophisticated design, innovative technology and exceptional performance. The challenge was to bring that same experience to the app itself — tying in the brand's vision and principles to honor everything it stands for.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/2.jpg" alt="Jenn-Air app screen — culinary center">
+      <img src="images/1.jpg" alt="Jenn-Air app screen — recipe detail">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Jenn&#8209;Air 2.0 — a redesign for connected appliances</h2>
+      <p>The Jenn&#8209;Air app was built for connectivity — letting users operate their kitchen appliances remotely. With cooking as the primary focus, the app lets people set cook or bake cycles on free-standing or wall ovens, monitor time and status, and get notified when a cycle ends. It also suggests the ideal cook time and temperature for whatever's being made, which is exactly what Jenn&#8209;Air stands for: perfection. The brand's connected line spans refrigerators, cooktops and microwaves.</p>
+      <p>Jenn&#8209;Air is a premium, sophisticated brand — the app previously on the market (1.0) felt completely disconnected from that identity. Ratings had fallen to 1.5–2 stars across Apple and Android, making it clear the business needed a real plan. That's how Jenn&#8209;Air 2.0 began.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-3">
+      <img src="images/5-1-673x1024.png" alt="Jenn-Air onboarding screen">
+      <img src="images/6-1-673x1024.png" alt="Jenn-Air recipe screen">
+      <img src="images/8-1-673x1024.png" alt="Jenn-Air appliance screen">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Goals for the redesign</h2>
+      <ol class="goals-list">
+        <li><p><b>Aesthetic overhaul</b> — tie brand principles to UI design for an elevated, premium experience.</p></li>
+        <li><p><b>A non-logged-in view</b> — app 1.0 offered nothing without a connected appliance. As a premium lifestyle brand, Jenn&#8209;Air needed more curated recipes and articles for every visitor.</p></li>
+        <li><p><b>Move the app rating</b> from 1.5–2.0 up to 4.0–5.0.</p></li>
+        <li><p><b>Smart UI techniques</b> that delight the user and elevate the overall brand and app experience.</p></li>
+        <li><p><b>Strategic differentiation</b> — Jenn&#8209;Air sits within the Whirlpool family alongside KitchenAid, Maytag and Whirlpool. Each brand needed its own clear identity.</p></li>
+        <li><p><b>An app that feels like an extension of the appliance</b> — design details inspired by the hardware itself.</p></li>
+        <li><p><b>Style and sophistication</b> — build a lifestyle around the brand, symbolic of its premium self.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide" style="display:flex; flex-direction:column; gap:4px;">
+      <img src="images/jennair-3-scaled.jpg" alt="Jenn-Air style exploration">
+      <img src="images/jennair-4-scaled.jpg" alt="Jenn-Air style exploration">
+      <img src="images/jennair-5-scaled.jpg" alt="Jenn-Air style exploration">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>App 1.0, that once was</h3>
+      <p>Jenn&#8209;Air has strong design principles — refined, structured, provocative — and the app that was on the market wasn't the best representation of what the brand stands for. The design lacked character, which showed clearly in the ratings.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-5">
+      <img src="images/9.png" alt="Old Jenn-Air app screen">
+      <img src="images/10.png" alt="Old Jenn-Air app screen">
+      <img src="images/11.png" alt="Old Jenn-Air app screen">
+      <img src="images/12.png" alt="Old Jenn-Air app screen">
+      <img src="images/13.png" alt="Old Jenn-Air app screen">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Establishing the style for Jenn&#8209;Air 2.0</h2>
+      <p>Jenn&#8209;Air has been around for decades, and black is the color people associate most with the brand — that became the foundation for a new palette symbolic of its premium identity and sophistication.</p>
+      <p>Photography is the life of the brand, so a lot of thought went into getting it right. With KitchenAid also under the Whirlpool umbrella and occupying the same kitchen space, clear differentiation mattered. KitchenAid represents inspiration and the maker's spirit — showing process, ingredients, technique. Jenn&#8209;Air, by contrast, is about the finished product: perfection, the final plated dish, food that looks like art. Jenn&#8209;Air imagery never shows process or anything visually imperfect.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h2>Style inspired by its own appliances</h2>
+      <p>The redesign ties the physical and digital together, taking design cues from the appliances themselves — from product photography's visual language down to small hardware details — to set the tone for the app.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-5">
+      <img src="images/17.png" alt="Jenn-Air style detail">
+      <img src="images/55.png" alt="Jenn-Air style detail">
+      <img src="images/56.png" alt="Jenn-Air style detail">
+      <img src="images/57.png" alt="Jenn-Air style detail">
+      <img src="images/58.png" alt="Jenn-Air style detail">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Jenn&#8209;Air 2.0 — the app</h2>
+      <p>At a high level, the app splits into four parts, forming the lower navigation bar: <b>Home</b>, <b>Culinary Center</b> (assistance &amp; customization), <b>Dashboard</b> (where connected appliances live), and <b>Settings</b>.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap feature-row">
+      <div>
+        <img class="icon" src="images/1-1.png" alt="Home icon">
+        <h3>Home</h3>
+      </div>
+      <div>
+        <p>The home screen takes a dynamic, Netflix-like approach that learns the user's habits over time and surfaces the most relevant information. The main slider features Jenn&#8209;Air custom recipes, curated by top chefs and tested repeatedly on Jenn&#8209;Air appliances to achieve perfection — visible to every user, whether or not they own an appliance yet.</p>
+        <p>Below that sits Assisted Cooking, which helps set the ideal settings for whatever's being made. As the app learns which settings and cycles a user relies on most, those surface for quick access — making the home screen feel genuinely personal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/26-558x1024.png" alt="Home screen 1">
+      <img src="images/27-558x1024.png" alt="Home screen 2">
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom:0; border-bottom:none;">
+    <div class="wrap feature-row">
+      <div>
+        <img class="icon" src="images/23.png" alt="Culinary center icon">
+        <h3>Culinary Center</h3>
+      </div>
+      <div>
+        <p>Culinary Center splits into three parts: Assisted Cooking, Jenn&#8209;Air Custom Recipes, and My Creations. Assisted Cooking suggests the right temperature and settings for whatever's being made (with the option to override), Custom Recipes guide users step-by-step through restaurant-style cooking, and My Creations lets users save their favorite results — settings included — so they can recreate them exactly next time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide" style="display:flex; flex-direction:column; gap:4px; padding-top:40px;">
+      <img src="images/jennair-6.jpg" alt="Culinary Center screen">
+      <img src="images/9.jpg" alt="Culinary Center detail">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap feature-row">
+      <div>
+        <img class="icon" src="images/24.png" alt="Dashboard icon">
+        <h3>Dashboard</h3>
+      </div>
+      <div>
+        <p>The Dashboard shows every connected appliance and its status, grouped by location for users with appliances in multiple places. Primary users can add family members and secondary users; only the primary account can add or remove an appliance. Adding one is simple — tap the add icon, scan the QR code on the appliance, and give it a custom name.</p>
+        <p>From here, users can check every appliance's status at a glance, operate them remotely, and set cycles. The app pushes a notification the moment a cycle finishes — for example, when a bake cycle ends and the food is ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide">
+      <img src="images/jennair-8-oph35ct3ihw221dsgi8ojda1a36o0nujaye7ty3iyw.jpg" alt="Jenn-Air Dashboard screen">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Style &amp; sophistication</h3>
+      <p>True to what the brand stands for, this redesign aimed for the most stylish app experience in the category. A well-defined style guide and clear rules for every visual component helped the team hit that mark consistently — simple, stylish, sleek, edgy. Building content from scratch meant full control over every element of the aesthetic; high-quality imagery and food styling did half the work.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h2>App Store assets</h2>
+      <p>App Store assets focus on surfacing the most important things about the app at a glance — an opportunity to build awareness of new features and capabilities while making a strong, on-brand first impression for new and returning users alike.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-5">
+      <img src="images/12-1.jpg" alt="App Store asset">
+      <img src="images/13.jpg" alt="App Store asset">
+      <img src="images/14.jpg" alt="App Store asset">
+      <img src="images/15.jpg" alt="App Store asset">
+      <img src="images/16.jpg" alt="App Store asset">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Brand expansion</h2>
+      <p>This project was also an opportunity for brand expansion through design. Custom marketing emails used the new visual language to raise awareness of new features and capabilities — targeted slightly differently for new versus existing customers.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide">
+      <img src="images/19-scaled.jpg" alt="Jenn-Air marketing email design">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Motion design &amp; navigation</h2>
+      <p>A glimpse of the overall motion design and navigation throughout the app.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-3">
+      <img src="images/IMB_bjstUe.gif" alt="Jenn-Air motion design 1">
+      <img src="images/IMB_oqus4R.gif" alt="Jenn-Air motion design 2">
+      <img src="images/IMB_P4asmm.gif" alt="Jenn-Air motion design 3">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Conclusion / learnings</h2>
+      <p>One of the biggest lessons from this project was the value of a well-developed, detailed style guide — it made producing dozens of screens far easier. Jenn&#8209;Air called for a huge amount of content creation, and having clear direction on what that content was and how to create it became the top priority.</p>
+      <p>The project's length was its own lesson: the team's focus on shipping a fully-developed, best version of the app meant it ran long — over two years, with people moving in and out along the way. It taught the wider organization the value of setting more achievable goals, a lesson clearly applied on projects that followed. Working closely with a remote development team day-to-day and constantly pushing each other on UI quality was a huge part of the growth this project brought — and I'm grateful to have seen it through to a successful launch.</p>
+    </div>
+  </section>
+
+  <section class="other-projects">
+    <div class="wrap">
+      <span class="eyebrow">Next up</span>
+      <h2>Check out some other projects</h2>
+      <div class="op-grid">
+        <a href="index.html#maytag" class="op-card">
+          <img src="images/maytag.jpg" alt="Maytag project thumbnail">
+          <div class="op-cap">Maytag App Redesign</div>
+        </a>
+        <a href="index.html#juicery" class="op-card">
+          <img src="images/pressed-juicery.jpg" alt="Pressed Juicery project thumbnail">
+          <div class="op-cap">Pressed Juicery</div>
+        </a>
+        <a href="index.html#amor" class="op-card">
+          <img src="images/amor.jpg" alt="Amor Calendar App project thumbnail">
+          <div class="op-cap">Amor Calendar App</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+    <div class="footer-links">
+      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

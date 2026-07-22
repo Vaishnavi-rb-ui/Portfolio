@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="password-gate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amor — The Calendar App — Vaishnavi R.B.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#FAF6EF; --ink:#1C1B19; --accent:#E8664F; --line: rgba(28,27,25,0.14); --line-strong: rgba(28,27,25,0.28); }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent); color:#fff;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  .wrap-wide{max-width:1280px; margin:0 auto; padding:0 40px;}
+  header{position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:19px; font-weight:500; text-decoration:none;}
+  .back-link{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.65;}
+  .back-link:hover{opacity:1;}
+  .hero{padding:90px 0 60px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .hero h1{font-size:clamp(38px,5.4vw,66px); line-height:1.05;}
+  .lede{padding:60px 0; border-bottom:1px solid var(--line);}
+  .lede p{font-size:16.5px; line-height:1.8; opacity:0.8; max-width:66ch; margin-bottom:18px;}
+  .imgrow{padding:50px 0; border-bottom:1px solid var(--line);}
+  .imgrow-inner{display:grid; gap:20px;}
+  .imgrow-inner.cols-2{grid-template-columns:1fr 1fr;}
+  .imgrow-inner.cols-3{grid-template-columns:repeat(3,1fr);}
+  .imgrow-inner.cols-4{grid-template-columns:repeat(4,1fr);}
+  .imgrow img{width:100%; display:block; border-radius:4px;}
+  .imgrow.full img{border-radius:0;}
+  .section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .section h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:24px; max-width:24ch;}
+  .section h3{font-size:clamp(22px,2.6vw,28px); margin-bottom:18px; max-width:26ch;}
+  .section p{font-size:16px; line-height:1.8; opacity:0.78; max-width:70ch; margin-bottom:20px;}
+  .goals-list{list-style:none; margin:0; padding:0; counter-reset:goal; border-top:1px solid var(--line-strong); max-width:76ch;}
+  .goals-list li{counter-increment:goal; padding:20px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:44px 1fr; gap:18px;}
+  .goals-list li::before{content:counter(goal, decimal-leading-zero); font-family:'IBM Plex Mono',monospace; font-size:13px; opacity:0.45; padding-top:2px;}
+  .goals-list li p{margin:0; font-size:15.5px; line-height:1.7; opacity:0.85;}
+  .other-projects{padding:90px 0;}
+  .other-projects h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:44px; max-width:20ch;}
+  .op-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .op-card{text-decoration:none; color:var(--ink); display:block;}
+  .op-card img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; display:block;}
+  .op-cap{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; margin-top:14px; opacity:0.7;}
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; max-width:1280px; margin:0 auto; padding:0 40px;}
+  footer .eyebrow{opacity:0.45;}
+  .footer-links{display:flex; gap:22px; font-size:13px;}
+  .footer-links a{text-decoration:none; opacity:0.6;}
+  .footer-links a:hover{opacity:1;}
+  @media (max-width:820px){
+    .wrap, .wrap-wide{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    .imgrow-inner.cols-2, .imgrow-inner.cols-3, .imgrow-inner.cols-4{grid-template-columns:1fr 1fr;}
+    .op-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html#work" class="back-link">← Back to work</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>05 — App · Illustration</div>
+      <h1>Amor — the Calendar App</h1>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <h3 style="margin-bottom:16px;">What's Amor</h3>
+      <p>Amor is a calendar app for artsy people — anyone who appreciates creativity and a bit more personality in the tools they use. Alongside popular holidays, it surfaces the countless other national days of the year — National Radio Day, National Chocolate Day — each with a custom illustration and quirky background that adds color and positivity to the everyday. The illustrations shift with the seasons, and underneath the fun, the app still handles the basics: reminders, alerts, and notes to keep users organized.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Background</h3>
+      <p>The idea came from noticing just how many fun "national days" exist — National Donut Day, National Pet Day, and dozens more — and realizing nearly every day of the year is claimed by something. That felt like a great excuse to showcase illustration skills while building something genuinely useful. For the concept to stick, the app needed real functionality alongside the illustrations — enough basic calendar and reminder features that people might actually use it instead of their phone's built-in calendar, since nobody wants to juggle multiple apps for the same job.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h3>User personas</h3>
+      <p>Creating personas helped clarify the target user: women roughly 12–26 years old, art lovers or artists themselves, drawn to colorful illustration, who want the inanimate things in their life to feel like they have a bit more personality — and who might be inspired to exercise their own creative passions a little more.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-3">
+      <img src="images/2-1.jpg" alt="Amor user persona">
+      <img src="images/3.jpg" alt="Amor user persona">
+      <img src="images/4.jpg" alt="Amor user persona">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Branding</h3>
+      <p>Flat illustration felt like the right style from the start — positive, creatively inspiring, and well suited to a project with hundreds of national-day themes to cover. The palette leans toward calming shades, since the app is just as likely to be opened first thing in the morning or during a stressful moment to set a reminder — soothing colors suit that use case. Typography went sans-serif for a more modern, informal feel.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/5-1-scaled.jpg" alt="Amor branding board"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>App screens</h2>
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/6-scaled.jpg" alt="Amor app screens"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Wireframing the functionality</h3>
+      <p>The core function is creating reminders for day-to-day events — title, location, start and end date and time, repetition, alerts, and custom notes.</p>
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/7.jpg" alt="Amor wireframe"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Basic functionality &amp; illustration</h3>
+      <p>Opening the app lands on a "Today" screen with an illustration tied to that date, pulled from three scenarios: national holidays (a flag for July 4th, a turkey for Thanksgiving), the fun lesser-known national days (National Space Day, National Beard Day), and seasonal illustrations that appear at the turn of a season.</p>
+      <p>The "Month" screen illustration follows the same date-driven logic — for National Watermelon Day, a repeating watermelon pattern; for National Donut Day, a pattern echoing the Today-screen palette. The full calendar screen for winter, for example, expands the Today-screen illustration into a fuller scene.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-3">
+      <img src="images/part-1-601x1024.jpg" alt="Amor month screen illustration">
+      <img src="images/part-2-597x1024.jpg" alt="Amor month screen illustration">
+      <img src="images/part-3-600x1024.jpg" alt="Amor month screen illustration">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>The flat illustration icon inspiration</h3>
+      <p>Flat illustration icons have a particular charm — visually flattering, but more importantly, they gave the Today screen a consistent circular canvas to design against, keeping the app feeling cohesive throughout.</p>
+      <h3 style="margin-top:36px;">Outlining illustrations using Sketch</h3>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-4">
+      <img src="images/11.jpg" alt="Amor illustration sketch">
+      <img src="images/9-1.jpg" alt="Amor illustration sketch">
+      <img src="images/10.jpg" alt="Amor illustration sketch">
+      <img src="images/12-2.jpg" alt="Amor illustration sketch">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Finished illustrations</h3>
+    </div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-4">
+      <img src="images/15-1.png" alt="Amor finished illustration">
+      <img src="images/14-1.png" alt="Amor finished illustration">
+      <img src="images/17-1.png" alt="Amor finished illustration">
+      <img src="images/16-1.png" alt="Amor finished illustration">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Finished screens</h3>
+    </div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-4">
+      <img src="images/19-1.png" alt="Amor finished screen">
+      <img src="images/18-1.png" alt="Amor finished screen">
+      <img src="images/21-1.png" alt="Amor finished screen">
+      <img src="images/20-1.png" alt="Amor finished screen">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>App screens</h2>
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/8.jpg" alt="Amor full app screens"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>A long way to go</h2>
+      <p>This project was a genuinely exciting way to improve and showcase illustration skills, and it delivered — concept, theme, branding, and layout were all fun to work through. There's still a lot more to do: hundreds more screens to conceptualize and illustrate, and real room to grow the functionality further, which could take this project a long way from here.</p>
+    </div>
+  </section>
+
+  <section class="other-projects">
+    <div class="wrap">
+      <span class="eyebrow">Next up</span>
+      <h2>Check out some other projects</h2>
+      <div class="op-grid">
+        <a href="jennair.html" class="op-card">
+          <img src="images/jennair.png" alt="Jenn-Air project thumbnail">
+          <div class="op-cap">Jenn&#8209;Air App Redesign</div>
+        </a>
+        <a href="maytag.html" class="op-card">
+          <img src="images/maytag.jpg" alt="Maytag project thumbnail">
+          <div class="op-cap">Maytag App Redesign</div>
+        </a>
+        <a href="pressed-juicery.html" class="op-card">
+          <img src="images/pressed-juicery.jpg" alt="Pressed Juicery project thumbnail">
+          <div class="op-cap">Pressed Juicery</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+    <div class="footer-links">
+      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

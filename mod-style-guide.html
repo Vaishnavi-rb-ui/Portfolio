@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="password-gate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mod — Style Guide — Vaishnavi R.B.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#FAF6EF; --ink:#1C1B19; --accent:#B0243D; --line: rgba(28,27,25,0.14); --line-strong: rgba(28,27,25,0.28); }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent); color:#fff;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  .wrap-wide{max-width:1280px; margin:0 auto; padding:0 40px;}
+  header{position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:19px; font-weight:500; text-decoration:none;}
+  .back-link{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.65;}
+  .back-link:hover{opacity:1;}
+  .hero{padding:90px 0 60px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .hero h1{font-size:clamp(38px,5.4vw,66px); line-height:1.05;}
+  .lede{padding:60px 0; border-bottom:1px solid var(--line);}
+  .lede p{font-size:16.5px; line-height:1.8; opacity:0.8; max-width:66ch; margin-bottom:18px;}
+  .imgrow{padding:50px 0; border-bottom:1px solid var(--line);}
+  .imgrow-inner{display:grid; gap:20px;}
+  .imgrow-inner.cols-2{grid-template-columns:1fr 1fr;}
+  .imgrow img{width:100%; display:block; border-radius:4px;}
+  .imgrow.full img{border-radius:0;}
+  .imgrow.stack{display:flex; flex-direction:column; gap:4px;}
+  .section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .section h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:24px; max-width:24ch;}
+  .section h3{font-size:clamp(22px,2.6vw,28px); margin-bottom:18px; max-width:26ch;}
+  .section p{font-size:16px; line-height:1.8; opacity:0.78; max-width:70ch; margin-bottom:20px;}
+  .other-projects{padding:90px 0;}
+  .other-projects h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:44px; max-width:20ch;}
+  .op-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .op-card{text-decoration:none; color:var(--ink); display:block;}
+  .op-card img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; display:block;}
+  .op-cap{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; margin-top:14px; opacity:0.7;}
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; max-width:1280px; margin:0 auto; padding:0 40px;}
+  footer .eyebrow{opacity:0.45;}
+  .footer-links{display:flex; gap:22px; font-size:13px;}
+  .footer-links a{text-decoration:none; opacity:0.6;}
+  .footer-links a:hover{opacity:1;}
+  @media (max-width:820px){
+    .wrap, .wrap-wide{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    .imgrow-inner.cols-2{grid-template-columns:1fr;}
+    .op-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html#work" class="back-link">← Back to work</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>04 — Editorial · Digital Magazine</div>
+      <h1>Mod Website — Style Guide</h1>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <h3 style="margin-bottom:16px;">What's Mod</h3>
+      <p>Mod is an online magazine collecting and publishing content on fashion, art, and photography, designed to suit young, stylish readers looking to feel motivated and exercise their creative passions. A "local" section helps readers find happenings near them, and the site tracks reading habits to suggest related articles and videos — giving each visitor a sense of belonging. Mod is fully responsive across platforms.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide imgrow stack">
+      <img src="images/modestyle-1.jpg" alt="Mod magazine homepage">
+      <img src="images/modestyle-2.jpg" alt="Mod magazine article layout">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/modestyle-3.jpg" alt="Mod magazine detail"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>My thoughts</h3>
+      <p>This is an attempt at building a full style guide for Mod — a document laying out how the site should be presented, from a graphic and language perspective, so consistency is easy to apply no matter who's building what. Dividing the guide into clear sections keeps the guidelines organized and usable as a go-to resource for colors, logos, fonts, layouts, and more.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h3>Preview</h3>
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/modestyle-4.jpg" alt="Mod style guide preview"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Process</h3>
+      <p>The project began as a way to understand the complexity of building a style guide — there's no single formula; the depth depends entirely on the scale of the project. Following the general logic of atomic design, the work started by breaking things into smaller pieces, then organizing documentation into sections: Mod's story, mission, vision, personality, target audience, inspiration, design goals, foundations, design patterns, and layouts.</p>
+      <p>Starting with Mod's story gives a sense of the past before getting into what's next. Laying out mission and vision early sets the right headspace, and understanding the brand's personality and audience explains why the product looks the way it does. Mod draws inspiration from the sophistication of fashion magazines — conveying that inspiration helps a reader understand the intended look and feel. Design goals help set expectations and drive accuracy and consistency. The Foundations section covers logo, typeface, colors, icons, and imagery — the five pillars that set the tone for the design patterns that follow, which are the molecules and organisms of the guide, where the pieces start coming together. Finally, layouts are where Mod actually starts to look like Mod.</p>
+      <p>Deciding what information earns a place in a guide like this — without overwhelming the reader — was the real challenge. The guide is split across multiple pages with a left-hand navigation, which suits a project with this many sections and keeps everything easy to find, laid out as simply and cleanly as possible to avoid clutter.</p>
+      <h2 style="margin-top:36px;">Style guide</h2>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide imgrow stack">
+      <img src="images/modestyle-5.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-6.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-7.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-8.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-9.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-10.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-11.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-12.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-13.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-14.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-15.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-16.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-17.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-18.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-19.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-20.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-21.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-22.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-23.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-24.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-25.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-26.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-27.jpg" alt="Mod style guide page">
+      <img src="images/modestyle-28.jpg" alt="Mod style guide page">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Conclusion</h3>
+      <p>Taking this project on was about understanding what it really takes to build a style guide — the level of detail demanded at every step was overwhelming at times, but it built a genuine appreciation for that depth of thinking at the start of any project. It showed how organized a process needs to be when there are many pages to think through and tie together. The guide still has a way to go — more pages to add and complete — and a style guide, in the truest sense, is never really finished. There's always room to improve it further. This was a great learning experience.</p>
+    </div>
+  </section>
+
+  <section class="other-projects">
+    <div class="wrap">
+      <span class="eyebrow">Next up</span>
+      <h2>Check out some other projects</h2>
+      <div class="op-grid">
+        <a href="maytag.html" class="op-card">
+          <img src="images/maytag.jpg" alt="Maytag project thumbnail">
+          <div class="op-cap">Maytag App Redesign</div>
+        </a>
+        <a href="jennair.html" class="op-card">
+          <img src="images/jennair.png" alt="Jenn-Air project thumbnail">
+          <div class="op-cap">Jenn&#8209;Air App Redesign</div>
+        </a>
+        <a href="amor.html" class="op-card">
+          <img src="images/amor.jpg" alt="Amor Calendar App project thumbnail">
+          <div class="op-cap">Amor Calendar App</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+    <div class="footer-links">
+      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

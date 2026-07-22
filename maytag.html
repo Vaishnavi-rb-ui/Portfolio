@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="password-gate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maytag — Vaishnavi R.B.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#FAF6EF; --ink:#1C1B19; --accent:#3B4C99; --line: rgba(28,27,25,0.14); --line-strong: rgba(28,27,25,0.28); }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent); color:#fff;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  .wrap-wide{max-width:1280px; margin:0 auto; padding:0 40px;}
+  header{position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:19px; font-weight:500; text-decoration:none;}
+  .back-link{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.65;}
+  .back-link:hover{opacity:1;}
+  .hero{padding:90px 0 60px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .hero h1{font-size:clamp(38px,5.4vw,66px); line-height:1.05;}
+  .lede{padding:60px 0; border-bottom:1px solid var(--line);}
+  .lede p{font-size:16.5px; line-height:1.8; opacity:0.8; max-width:66ch; margin-bottom:18px;}
+  .imgrow{padding:50px 0; border-bottom:1px solid var(--line);}
+  .imgrow-inner{display:grid; gap:20px;}
+  .imgrow-inner.cols-2{grid-template-columns:1fr 1fr;}
+  .imgrow-inner.cols-3{grid-template-columns:repeat(3,1fr);}
+  .imgrow img{width:100%; display:block; border-radius:4px;}
+  .imgrow.full img{border-radius:0;}
+  .section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .section h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:24px; max-width:24ch;}
+  .section h3{font-size:clamp(22px,2.6vw,28px); margin-bottom:18px; max-width:26ch;}
+  .section p{font-size:16px; line-height:1.8; opacity:0.78; max-width:70ch; margin-bottom:20px;}
+  .goals-list{list-style:none; margin:0; padding:0; counter-reset:goal; border-top:1px solid var(--line-strong); max-width:76ch;}
+  .goals-list li{counter-increment:goal; padding:20px 0; border-bottom:1px solid var(--line); display:grid; grid-template-columns:44px 1fr; gap:18px;}
+  .goals-list li::before{content:counter(goal, decimal-leading-zero); font-family:'IBM Plex Mono',monospace; font-size:13px; opacity:0.45; padding-top:2px;}
+  .goals-list li p{margin:0; font-size:15.5px; line-height:1.7; opacity:0.85;}
+  .goals-list li b{font-weight:600;}
+  .other-projects{padding:90px 0;}
+  .other-projects h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:44px; max-width:20ch;}
+  .op-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .op-card{text-decoration:none; color:var(--ink); display:block;}
+  .op-card img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; display:block;}
+  .op-cap{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; margin-top:14px; opacity:0.7;}
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; max-width:1280px; margin:0 auto; padding:0 40px;}
+  footer .eyebrow{opacity:0.45;}
+  .footer-links{display:flex; gap:22px; font-size:13px;}
+  .footer-links a{text-decoration:none; opacity:0.6;}
+  .footer-links a:hover{opacity:1;}
+  @media (max-width:820px){
+    .wrap, .wrap-wide{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    .imgrow-inner.cols-2, .imgrow-inner.cols-3{grid-template-columns:1fr;}
+    .op-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html#work" class="back-link">← Back to work</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>02 — App · UX Design</div>
+      <h1>Maytag Connected Laundry App Redesign, the design process</h1>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <p><b>Project brief:</b> create an interim version of the Maytag app for connected appliances that feels straightforward, powerful, and uniquely Maytag — an experience that extends the user's appliance and unlocks the full spectrum of power (knowledge, remote control, speed, performance) in their daily routine.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/3-1.jpg" alt="Maytag app hero screen"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Landing on a style that honors the brand principles</h2>
+      <p>The Maytag app centers on connected laundry — letting users operate their washer and dryer remotely, set and schedule wash and dry cycles, monitor time remaining, and get notified on status. It helps users pick the right cycle for the stains or load they're dealing with, and the redesign was built flexible enough to accommodate Maytag's move into connected kitchen appliances down the line.</p>
+      <p>Maytag is an American home and commercial appliance brand under the Whirlpool Corporation, with about 80% of its business in laundry — so the redesign focused there. Maytag stands for <b>dependable, powerful, and intentional</b>, and bringing that through clearly was the priority. This was Maytag's fifth app release (1.5), and deliberately did <b>not</b> chase new features — the focus was the "how," not the "what": a complete UI makeover through cleaner UX, not new functionality unless absolutely necessary.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h2>Goals for the redesign</h2>
+      <ol class="goals-list">
+        <li><p><b>Aesthetic overhaul</b> — tie brand principles to UI design for an elevated brand experience.</p></li>
+        <li><p><b>Focus on the "how," not the "what"</b> — deliver existing features in a redefined, straightforward, powerful way rather than introducing new ones.</p></li>
+        <li><p><b>Tried &amp; true methodology</b> — Maytag users want the job done and trust familiar patterns; not every wheel needed reinventing.</p></li>
+        <li><p><b>An app that feels like an extension of the appliance</b> — design details inspired by the hardware itself.</p></li>
+        <li><p><b>Strategic differentiation</b> — distinct from sibling Whirlpool brands like KitchenAid and Jenn&#8209;Air.</p></li>
+        <li><p><b>Appeal to Gen X &amp; millennials</b> — move past Maytag's reputation as a brand only older generations use.</p></li>
+        <li><p><b>Set the stage for future redesigns</b> — lay groundwork for a later release that tackles new features.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/maytag-4.jpg" alt="Maytag onboarding">
+      <img src="images/maytag-5-571x1024.jpg" alt="Maytag screen detail">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Elevating the brand position</h2>
+      <p>Maytag has long carried a reputation for being a bit boring — a brand skewing older, whose customers might not be the most tech-forward. Research from the brand and marketing teams proved the opposite: Maytag owners are Gen X and millennials who use smartphones and welcome remote control of their appliances — they just don't want technology for its own sake. They want it purposeful. The redesign leaned into appealing to that audience with intention, not novelty.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-6.jpg" alt="Maytag style direction"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Existing app 1.0</h3>
+      <p>Maytag was one of four major Whirlpool Corp brands, and the first connected-laundry app was actually designed for Whirlpool itself — a gold/yellow version of the same screens. Once built, the colors were simply swapped to Maytag's brand palette and shipped. The result lacked character and wasn't uniquely identifiable as Maytag, even though the brand's pillars — powerful, dependable, intentional — didn't come through at all. That mismatch is what kicked off the conversation for a real redesign.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/8-1.jpg" alt="Old Maytag app screen">
+      <img src="images/9-2.jpg" alt="Old Maytag app screen">
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-9.jpg" alt="Maytag redesign direction"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Workshop, kickstarting the redesign</h2>
+      <p>The project began with a workshop bringing together Maytag brand and marketing, IoT, industrial design, and digital UI/UX — all aligning on what Maytag means from every angle, and reviewing the marketing research behind the brand pillars: dependable, powerful, intentional. With Whirlpool, Jenn&#8209;Air, KitchenAid and Maytag all under one roof, understanding what set each brand apart was critical to landing on something uniquely Maytag.</p>
+      <p>The company uses a brand-quadrant structure with a distinct archetype per brand: Whirlpool is care, Jenn&#8209;Air is shine, KitchenAid is craft, and Maytag is <b>peace</b> — as in peace of mind. Translating that idea into design decisions became the throughline for the whole project.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-10.jpg" alt="Maytag word association exercise"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Defining the target audience — the trust keepers</h2>
+      <p>Trust keepers like things simple, lead a relaxed lifestyle, and still want to feel in control. They find comfort in a schedule, value performance, reliability, and durability over chasing trends. "Peace of mind" meant removing fluff and getting straight to the point — giving users only what they need, through simple, tried-and-true patterns, so the app feels like a genuine helping hand.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/13-1-e1589553200709.jpg" alt="Maytag inspiration board">
+      <img src="images/12-1-1-e1589553232299.jpg" alt="Maytag inspiration board">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>The design process</h2>
+      <p>After the workshop, the team built an inspiration board used as a reference throughout — including in areas of product design beyond just the app. From there, the process centered on designing one wireframe — the home/appliance-status screen — and exploring many UI directions on top of it, so every option compared apples to apples. Home was chosen because it carries the most information and hierarchy, making it the clearest test of the right direction.</p>
+      <p>Research included interviews with the public and with people inside the organization about laundry and Maytag — a topic everyone had opinions on.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-13.jpg" alt="Maytag exploration grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Research takeaways that shaped the key decisions</h2>
+      <ol class="goals-list">
+        <li><p>People strongly associated the brand with <b>powerful, reliable, and intentional</b> — words that came up unprompted and went on to define the brand pillars further.</p></li>
+        <li><p><b>90% of people don't like doing laundry</b> — a key driver behind every design decision that followed.</p></li>
+        <li><p><b>Get to the point</b> — simple, purposeful design that gives users only what they want, without adding friction.</p></li>
+        <li><p><b>People were genuinely excited</b> about a better laundry app — especially seeing cycle status remotely, getting notified when done, and scheduling cycles ahead so laundry's ready when they're home.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-14-1024x687.jpg" alt="Maytag wireframe exploration"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Explorations</h2>
+      <p>Explorations started from a single wireframe — the Home/Appliance Status screen — after research made clear that the very first thing users want on opening the app is their appliance's status. Since people tend to run the same cycle repeatedly, surfacing dynamic cycle favorites and per-appliance history early turned out to add real value.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/maytag-15.jpg" alt="Maytag UI exploration variants"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p>Multiple explorations were reviewed with the broader team, and the strongest elements from each were carried into the final direction: big bold text felt powerful and reliable; icons (rather than actual appliance photos) let visually similar washer/dryer models read as distinct; rectangular, filled, bold buttons felt more dependable than rounded or outlined ones; a big, bold countdown timer added real value. The core challenge was keeping the home screen simple without making it feel cold or flat — finding that balance was the work.</p>
+      <p>The final direction won because it was simple — every element had a clear place and purpose, surfaced the most relevant information first, felt modern and clean, and used motion design to stay interesting. Small graphical details, inspired by Maytag's own appliances, reinforced the idea that the app is an extension of the hardware itself.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/maytag-16.jpg" alt="Maytag final direction screen">
+      <img src="images/maytag-17.jpg" alt="Maytag final direction screen">
+    </div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/maytag-18.jpg" alt="Maytag final screen">
+      <img src="images/maytag-19.jpg" alt="Maytag final screen">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Challenges</h2>
+      <ol class="goals-list">
+        <li><p>Deciding between real product photography and icons for washers/dryers — solved with intentional icon design, since matching-set appliances can look nearly identical.</p></li>
+        <li><p>The home screen doubling as the appliance-status screen — keeping it simple and to-the-point while still making it feel interesting, largely solved through purposeful motion design.</p></li>
+        <li><p>Designing for future flexibility, since connected ovens and microwaves were likely to follow washers and dryers.</p></li>
+        <li><p>Planning for translation into French and Spanish, where text runs roughly 30–40% longer than English — a constraint baked into every component and the design system.</p></li>
+        <li><p>Deciding what earns visual weight — as the saying goes, when everything is bold, nothing is bold.</p></li>
+        <li><p>Bringing stakeholders on board with new accent colors and a new direction through presentations, printouts, and working prototypes on real devices.</p></li>
+        <li><p>Once the direction was approved, building out repeatable patterns across the full app through a design system — itself an ongoing process.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Flexibility in design</h2>
+      <p>The direction had to flex with each user's real situation — the appliance tab, for instance, adapts across four states: no connected appliance, one, two, or three-plus connected appliances.</p>
+    </div>
+  </section>
+
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-3">
+      <img src="images/maytag-26.jpg" alt="Maytag flexible layout, no appliance">
+      <img src="images/maytag-27.jpg" alt="Maytag flexible layout, one appliance">
+      <img src="images/maytag-28.jpg" alt="Maytag flexible layout, two appliances">
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Conclusion / learnings</h2>
+      <p>The biggest takeaway was the value of strong presentation technique in bringing stakeholders along at every step, and how efficient a redesign can be when broken into achievable goals pursued with focus. Deliberately targeting the "how" over the "what" meant shipping a better app sooner, ahead of upcoming connected-product launches — and it underscored how much research shapes real understanding of what users need.</p>
+      <p>Understanding how these appliances actually connect — over WiFi or BLE — and the complexity that comes with it was invaluable in designing the app itself. This project is still under development, and being part of it has been a genuinely rewarding learning experience.</p>
+    </div>
+  </section>
+
+  <section class="other-projects">
+    <div class="wrap">
+      <span class="eyebrow">Next up</span>
+      <h2>Check out some other projects</h2>
+      <div class="op-grid">
+        <a href="jennair.html" class="op-card">
+          <img src="images/jennair.png" alt="Jenn-Air project thumbnail">
+          <div class="op-cap">Jenn&#8209;Air App Redesign</div>
+        </a>
+        <a href="pressed-juicery.html" class="op-card">
+          <img src="images/pressed-juicery.jpg" alt="Pressed Juicery project thumbnail">
+          <div class="op-cap">Pressed Juicery</div>
+        </a>
+        <a href="amor.html" class="op-card">
+          <img src="images/amor.jpg" alt="Amor Calendar App project thumbnail">
+          <div class="op-cap">Amor Calendar App</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+    <div class="footer-links">
+      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

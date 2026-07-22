@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="password-gate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Direction — Vaishnavi R.B.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --paper:#FAF6EF; --ink:#1C1B19; --accent:#C77B72; --line: rgba(28,27,25,0.14); --line-strong: rgba(28,27,25,0.28); }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter', sans-serif; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--accent); color:#fff;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase; opacity:0.55;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 40px;}
+  .wrap-wide{max-width:1280px; margin:0 auto; padding:0 40px;}
+  header{position:sticky; top:0; z-index:50; background:rgba(250,246,239,0.9); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:20px 40px; max-width:1280px; margin:0 auto;}
+  .nav-mark{font-family:'Fraunces', serif; font-size:19px; font-weight:500; text-decoration:none;}
+  .back-link{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; text-decoration:none; opacity:0.65;}
+  .back-link:hover{opacity:1;}
+  .hero{padding:90px 0 60px; border-bottom:1px solid var(--line);}
+  .hero .eyebrow{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero .eyebrow .dot{width:8px; height:8px; border-radius:50%; background:var(--accent);}
+  .hero h1{font-size:clamp(38px,5.4vw,66px); line-height:1.05;}
+  .lede{padding:60px 0; border-bottom:1px solid var(--line);}
+  .lede p{font-size:16.5px; line-height:1.8; opacity:0.8; max-width:66ch; margin-bottom:18px;}
+  .imgrow{padding:50px 0; border-bottom:1px solid var(--line);}
+  .imgrow-inner{display:grid; gap:20px;}
+  .imgrow-inner.cols-2{grid-template-columns:1fr 1fr;}
+  .imgrow img{width:100%; display:block; border-radius:4px;}
+  .imgrow.full img{border-radius:0;}
+  .section{padding:70px 0; border-bottom:1px solid var(--line);}
+  .section h2{font-size:clamp(28px,3.4vw,40px); margin-bottom:24px; max-width:24ch;}
+  .section h3{font-size:clamp(22px,2.6vw,28px); margin-bottom:18px; max-width:26ch;}
+  .section p{font-size:16px; line-height:1.8; opacity:0.78; max-width:70ch; margin-bottom:20px;}
+  .other-projects{padding:90px 0;}
+  .other-projects h2{font-size:clamp(28px,3.6vw,40px); margin-bottom:44px; max-width:20ch;}
+  .op-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .op-card{text-decoration:none; color:var(--ink); display:block;}
+  .op-card img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:4px; display:block;}
+  .op-cap{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; margin-top:14px; opacity:0.7;}
+  footer{padding:50px 0; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; max-width:1280px; margin:0 auto; padding:0 40px;}
+  footer .eyebrow{opacity:0.45;}
+  .footer-links{display:flex; gap:22px; font-size:13px;}
+  .footer-links a{text-decoration:none; opacity:0.6;}
+  .footer-links a:hover{opacity:1;}
+  @media (max-width:820px){
+    .wrap, .wrap-wide{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    .imgrow-inner.cols-2{grid-template-columns:1fr;}
+    .op-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <a href="index.html" class="nav-mark">Vaishnavi&nbsp;R.B.</a>
+    <a href="index.html#work" class="back-link">← Back to work</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><span class="dot"></span>06 — Interiors · Styling</div>
+      <h1>Art Direction — other design experience</h1>
+    </div>
+  </section>
+
+  <section class="lede">
+    <div class="wrap">
+      <h3 style="margin-bottom:16px;">Background</h3>
+      <p>Most of the work here comes from previous roles as an art director, stylist, and designer for a leading online furniture retailer, working closely with product design and marketing to create styling concepts that captured the attention of target markets. The work covered directing, conceptualizing, styling, and managing a team through on-location and in-studio photoshoots — following the full design process (brainstorming, research, ideation, trend analysis, concept boards) to define color, layout, product and prop placement, hierarchy, and lighting in ways that felt trendy and aspirational, making the customer's buying choice easier.</p>
+      <p>Much of the work involved combining physical photoshoots with technology — full shoots are expensive and time-consuming, and blending in post-production work eased that process considerably. The team experimented heavily with reducing launch time, including building 3D models and styling entirely through tools like AutoCAD, Photoshop, and Illustrator to get products looking as close to reality as possible. What's shown here is a mix of both approaches, spanning living, dining, kitchen, outdoor, study, storage, decor, and other furniture and decor categories — alongside ongoing research into the ecommerce furniture retail space to stay ahead and keep styling itself taken seriously.</p>
+    </div>
+  </section>
+
+  <section class="section" style="border-top:1px solid var(--line); padding-top:70px;">
+    <div class="wrap">
+      <h3>Process</h3>
+      <p>The process generally starts once a product is sourced — or occasionally designed in-house — and I'm briefed on its material, style, source, and any standout qualities, along with its price point, which shapes whether it reads economy, luxury, or somewhere in between and heavily informs the styling direction. From there, a meeting with sourcing, product, marketing, and branding teams shapes how we want to collectively position the product in the market, combining intuition with research to land on the strongest direction.</p>
+      <p>From there I conceptualize the styling and build a rough mood board for feedback, source the props, and set the shoot — taking on the role of director, stylist, and team manager alongside a photographer and crew, shooting multiple options until the right shot lands. Post-production is where a lot of the real magic happens: props too expensive for the shoot's budget can often be added smartly in post, giving the image its finishing touch. The final image goes to other teams for review, and once approved, goes live for the product launch. We track how each product performs and apply those learnings to future styling — some directions consistently outperform others, and each project is a chance to improve on the last.</p>
+    </div>
+  </section>
+
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-1.jpg" alt="Art direction styling example — bedroom"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-2.jpg" alt="Art direction styling example">
+      <img src="images/otherdesgin-3.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-4.jpg" alt="Art direction styling example — living room"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-5.jpg" alt="Art direction styling example">
+      <img src="images/otherdesgin-6.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-7.jpg" alt="Art direction styling example — dining"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-8.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-9.jpg" alt="Art direction styling example — outdoor"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-10.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-11.jpg" alt="Art direction styling example — study"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-12-1024x624.jpg" alt="Art direction styling example">
+      <img src="images/otherdesgin-13.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-14.jpg" alt="Art direction styling example — storage"></div>
+  </section>
+  <section class="imgrow">
+    <div class="wrap-wide imgrow-inner cols-2">
+      <img src="images/otherdesgin-15.jpg" alt="Art direction styling example">
+      <img src="images/otherdesgin-16.jpg" alt="Art direction styling example">
+    </div>
+  </section>
+  <section class="imgrow full">
+    <div class="wrap-wide"><img src="images/otherdesgin-17.jpg" alt="Art direction styling example — decor"></div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h3>Conclusion</h3>
+      <p>These projects built a real sense of process — not just the design process, but everything that comes with working: budget management, working under pressure and tight schedules, keeping the customer's perspective front and center, working toward the health of the business, taking feedback constructively, staying aligned with company goals, team management and collaboration, meeting deadlines, sourcing, scheduling, and more. Designing is a process, and the love for that process only grows with every project — brainstorming, research, conceptualization, and trend analysis, all working together with business goals and the target audience to find the right solution for each product.</p>
+    </div>
+  </section>
+
+  <section class="other-projects">
+    <div class="wrap">
+      <span class="eyebrow">Next up</span>
+      <h2>Check out some other projects</h2>
+      <div class="op-grid">
+        <a href="jennair.html" class="op-card">
+          <img src="images/jennair.png" alt="Jenn-Air project thumbnail">
+          <div class="op-cap">Jenn&#8209;Air App Redesign</div>
+        </a>
+        <a href="amor.html" class="op-card">
+          <img src="images/amor.jpg" alt="Amor Calendar App project thumbnail">
+          <div class="op-cap">Amor Calendar App</div>
+        </a>
+        <a href="maytag.html" class="op-card">
+          <img src="images/maytag.jpg" alt="Maytag project thumbnail">
+          <div class="op-cap">Maytag App Redesign</div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <span class="eyebrow">© 2026 Vaishnavi R.B.</span>
+    <div class="footer-links">
+      <a href="mailto:hello@vaishnavirb.com">hello@vaishnavirb.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
